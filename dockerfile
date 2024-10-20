@@ -10,5 +10,5 @@ RUN npm install -g n8n
 # Expone el puerto que n8n usa por defecto
 EXPOSE 5678
 
-# Ejecuta n8n cuando el contenedor arranque
-CMD ["n8n"]
+# Ejecuta n8n forzándolo a escuchar en todas las interfaces (0.0.0.0)
+CMD ["n8n", "start", "--tunnel"]
