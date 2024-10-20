@@ -1,13 +1,14 @@
-# Usa la imagen oficial de n8n desde Docker Hub
-FROM n8nio/n8n:latest
+# Usa la imagen oficial de Node.js como base
+FROM node:16
 
-# Define variables de entorno, si necesitas alguna configuración específica
-ENV N8N_BASIC_AUTH_ACTIVE=true
-ENV N8N_BASIC_AUTH_USER=mi_usuario
-ENV N8N_BASIC_AUTH_PASSWORD=mi_contraseña
+# Crea un directorio de trabajo para n8n
+WORKDIR /data
 
-# Expone el puerto 5678, que es el puerto por defecto de n8n
+# Instala n8n globalmente
+RUN npm install -g n8n
+
+# Expone el puerto que n8n usa por defecto
 EXPOSE 5678
 
-# Comando para iniciar n8n
+# Ejecuta n8n cuando el contenedor arranque
 CMD ["n8n"]
